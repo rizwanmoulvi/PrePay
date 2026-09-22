@@ -1,0 +1,40 @@
+{
+  "name": "create-solana-next-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.32.1",
+    "@privy-io/react-auth": "^2.24.0",
+    "@privy-io/server-auth": "^1.32.2",
+    "@solana-program/system": "^0.7.0",
+    "@solana/kit": "^2.3.0",
+    "@solana/spl-token": "^0.4.13",
+    "@solana/web3.js": "^1.98.2",
+    "bs58": "^6.0.0",
+    "html5-qrcode": "^2.3.8",
+    "lithic": "^0.147.0",
+    "lucide-react": "^0.513.0",
+    "mongodb": "^7.6.0",
+    "next": "15.3.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-qr-code": "^2.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "9.34.0",
+    "eslint-config-next": "15.5.2",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.15",
+    "typescript": "^5"
+  }
+}
