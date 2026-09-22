@@ -8,7 +8,7 @@ import { SolanaWalletProvider } from "./SolanaWalletProvider";
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <PrivyProvider
-      appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID as string}
+      appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || "cmtvnb27v00550cl5q0db7pjw"}
       config={{
         solana: {
           rpcs: {
