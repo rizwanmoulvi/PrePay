@@ -35,29 +35,15 @@ export default function RedeemPage() {
         const res = await fetch("/api/prestocks");
         if (res.ok) setPrestocks(await res.json());
 
-        const { Connection, PublicKey } = await import("@solana/web3.js");
-        const { Program, AnchorProvider } = await import("@coral-xyz/anchor");
-        const { IDL } = await import("@/lib/prepay/idl");
-
-        const rpcUrl = process.env.NEXT_PUBLIC_SOLANA_RPC_URL || "https://api.devnet.solana.com";
-        const conn = new Connection(rpcUrl, "confirmed");
-        let pubkey;
         try {
-            pubkey = new PublicKey(walletAddress);
+            const pRes = await fetch(`/api/positions?address=${walletAddress}`);
+            const pData = await pRes.json();
+            if (pData.success) {
+                setPositions(pData.positions);
+            }
         } catch (e) {
-            console.error("Invalid Solana address:", walletAddress);
-            setLoading(false);
-            return;
+            console.error("Positions fetch error:", e);
         }
-        
-        const dummyProvider = new AnchorProvider(conn, {} as any, { commitment: "confirmed" });
-        const program = new Program(IDL as any, dummyProvider);
-        
-        const allPositions = await (program.account as any).userPosition.all([
-          { memcmp: { offset: 8, bytes: pubkey.toBase58() } }
-        ]);
-        
-        setPositions(allPositions.filter((p: any) => p.account.collateralAmount.toNumber() > 0));
       } catch(e) {
         console.error(e);
       } finally {
