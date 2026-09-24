@@ -61,14 +61,14 @@ export default function RedeemPage() {
     if (selectedPosIds.length === positions.length) {
       setSelectedPosIds([]);
     } else {
-      setSelectedPosIds(positions.map(p => p.publicKey.toBase58()));
+      setSelectedPosIds(positions.map(p => p.pubkey));
     }
   };
 
   const handleRedeem = async () => {
     if (!walletAddress || selectedPosIds.length === 0) return;
     
-    const selectedPositions = positions.filter(p => selectedPosIds.includes(p.publicKey.toBase58()));
+    const selectedPositions = positions.filter(p => selectedPosIds.includes(p.pubkey));
     if (selectedPositions.length === 0) return;
     
     setIsProcessing(true);
